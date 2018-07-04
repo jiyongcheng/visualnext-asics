@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Visual_CustomCheckout>
+            <version>0.1.0</version>    <!-- Version of module -->
+        </Visual_CustomCheckout>
+    </modules>
+    <frontend>
+        <routers>
+            <custom_checkout>
+                <use>standard</use>
+                <args>
+                    <module>Visual_CustomCheckout</module>
+                    <frontName>custom_checkout</frontName>
+                </args>
+            </custom_checkout>
+        </routers>
+    </frontend>
+    <global>
+        <events>
+            <sales_order_invoice_pay>
+                <observers>
+                    <Visual_CustomCheckout_Model_Observer>
+                        <type>singleton</type>
+                        <class>Visual_CustomCheckout_Model_Observer</class>
+                        <method>callOrderApiAfterPaidSuccess</method>
+                    </Visual_CustomCheckout_Model_Observer>
+                </observers>
+            </sales_order_invoice_pay>
+        </events>
+    </global>
+</config>

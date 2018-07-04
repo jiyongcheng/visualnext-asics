@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <catalog>
+            <children>
+                <product translate="title" module="product">
+                    <title>Mass Products Import</title>
+                    <action>product/adminhtml_import/new</action>
+                    <sort_order>40</sort_order>
+                </product>
+            </children>
+        </catalog>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <catalog>
+                        <children>
+                            <product translate="title" module="product">
+                                <title>Mass Products Import</title>
+                                <sort_order>40</sort_order>
+                            </product>
+                        </children>
+                    </catalog>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

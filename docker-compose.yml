@@ -1,0 +1,38 @@
+version: "3"
+services:
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: abc123_
+      MYSQL_DATABASE: demo
+      MYSQL_USER: demo
+      MYSQL_PASSWORD: demo
+    volumes:
+      - ./docker/mariadb/config:/etc/mysql/conf.d
+      - ./docker/mariadb/data:/var/lib/mysql
+      - ./docker/mariadb/dumps:/docker-entrypoint-initdb.d
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8123:8080
+  nginx:
+    image: nginx
+    volumes:
+      - ./:/app
+      - ./docker/nginx/my.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 8080:80
+    links:
+      - app
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+    ports:
+      - 9000
+    links:
+      - db

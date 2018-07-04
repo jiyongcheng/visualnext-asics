@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Visual_Product>
+            <version>0.1.1</version>    <!-- Version of module -->
+        </Visual_Product>
+    </modules>
+    <frontend>
+        <routers>
+            <product>
+                <use>standard</use>
+                <args>
+                    <module>Visual_Product</module>
+                    <frontName>product</frontName>  <!-- This is the URL of the module. i.e www.yourmagento.com/index.php/test will be the url of your module. -->
+                </args>
+            </product>
+        </routers>
+    </frontend>
+    <global>
+        <blocks>
+            <product>
+                <class>Visual_Product_Block</class>  <!-- Path of the Block Folder, where all php files are located related to view -->
+            </product>
+        </blocks>
+        <helpers>
+            <product>
+                <class>Visual_Product_Helper</class>
+                <!-- Path of Helper Files -->
+            </product>
+        </helpers>
+        <models>
+            <product>
+                <class>Visual_Product_Model</class>
+                <resourceModel>product_mysql4</resourceModel>
+            </product>
+            <product_mysql4>
+                <class>Visual_Product_Model_Mysql4</class>
+                <entities>
+                    <!--<product>-->
+                        <!--<table>visual_product</table>-->
+                    <!--</product>-->
+                </entities>
+            </product_mysql4>
+        </models>
+        <resources>
+            <product_setup>
+                <setup>
+                    <module>Visual_Product</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+
+            </product_setup>
+            <product_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </product_write>
+            <product_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </product_read>
+        </resources>
+    </global>
+    <admin>
+        <routers>
+            <product>
+                <use>admin</use>
+                <args>
+                    <module>Visual_Product</module>
+                    <frontName>product</frontName>
+                </args>
+            </product>
+        </routers>
+    </admin>
+</config>

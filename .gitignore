@@ -1,0 +1,9 @@
+.DS_Store
+.gitignore.*
+.idea
+docker/mariadb/data/*
+src/var/cache
+src/var/log
+src/var/report
+src/var/session
+src/app/etc/
